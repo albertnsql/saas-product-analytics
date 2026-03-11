@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  # ── CORE ──────────────────────────────────────────────────
+  - name: dim_users
+    description: "Master user dimension — one row per user with full activity context"
+    columns:
+      - name: user_id
+        tests: [unique, not_null]
+      - name: plan
+        tests:
+          - accepted_values:
+              values: ['free', 'pro', 'enterprise']
+      - name: is_churned
+        tests: [not_null]
+      - name: mrr
+        tests: [not_null]
+
+  - name: fct_retention
+    description: "Cohort retention matrix — % of users active N months after signup"
+    columns:
+      - name: retention_pct
+        tests: [not_null]
+
+  # ── FINANCE ───────────────────────────────────────────────
+  - name: fct_mrr
+    description: "Monthly MRR movements — new, expansion, contraction, churn, retained"
+    columns:
+      - name: month_date
+        tests: [not_null]
+      - name: mrr_movement_type
+        tests:
+          - accepted_values:
+              values: ['new', 'new_free', 'expansion', 'contraction', 'retained', 'churn']
+
+  - name: fct_churn
+    description: "One row per churned user with behavioral context"
+    columns:
+      - name: user_id
+        tests: [unique, not_null]
+      - name: churn_stage
+        tests:
+          - accepted_values:
+              values: ['immediate', 'early', 'mid', 'late']
+
+  # ── PRODUCT ───────────────────────────────────────────────
+  - name: fct_sessions
+    description: "Enriched session fact — every session with user context"
+    columns:
+      - name: session_id
+        tests: [unique, not_null]
+
+  - name: fct_feature_usage
+    description: "Daily feature usage aggregated by plan, feature, and platform"
+    columns:
+      - name: event_date
+        tests: [not_null]
+      - name: feature_name
+        tests: [not_null]

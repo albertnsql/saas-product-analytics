@@ -1,0 +1,81 @@
+version: 2
+
+sources:
+  - name: raw
+    database: saas_analytics
+    schema: raw
+    description: "Raw tables loaded directly from CSV files into Snowflake"
+    tables:
+      - name: users
+        description: "One row per user — signup info, plan, churn status"
+        columns:
+          - name: user_id
+            tests: [unique, not_null]
+          - name: plan
+            tests:
+              - accepted_values:
+                  values: ['free', 'pro', 'enterprise']
+          - name: signup_date
+            tests: [not_null]
+
+      - name: raw_identifies
+        description: "Signup identify events from the event stream"
+        columns:
+          - name: message_id
+            tests: [unique, not_null]
+
+      - name: plan_changes
+        description: "Upgrade and downgrade events"
+        columns:
+          - name: change_id
+            tests: [unique, not_null]
+          - name: change_type
+            tests:
+              - accepted_values:
+                  values: ['upgrade', 'downgrade']
+
+      - name: sessions
+        description: "One row per user session"
+        columns:
+          - name: session_id
+            tests: [unique, not_null]
+          - name: user_id
+            tests: [not_null]
+
+      - name: raw_tracks
+        description: "Feature usage events — one row per feature interaction"
+        columns:
+          - name: message_id
+            tests: [unique, not_null]
+
+      - name: raw_pages
+        description: "Page view events — one row per page visit"
+        columns:
+          - name: message_id
+            tests: [unique, not_null]
+
+      - name: subscriptions
+        description: "One subscription row per user"
+        columns:
+          - name: subscription_id
+            tests: [unique, not_null]
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['active', 'cancelled']
+
+      - name: payments
+        description: "All payment transactions including failures and refunds"
+        columns:
+          - name: payment_id
+            tests: [unique, not_null]
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['succeeded', 'failed', 'refunded']
+
+      - name: support_tickets
+        description: "Customer support tickets"
+        columns:
+          - name: ticket_id
+            tests: [unique, not_null]
