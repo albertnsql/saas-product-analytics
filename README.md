@@ -21,6 +21,10 @@ Built as a portfolio project to demonstrate end-to-end Analytics Engineering ski
 
 ## 🔗 Live Dashboard
 
+<a href="https://saasanalytics.streamlit.app/" target="_blank" rel="noopener noreferrer">
+  → Live Dashboard
+</a>
+
 **[→ saasanalytics.streamlit.app](https://saasanalytics.streamlit.app/)**
 
 ## 📈 Executive Overview
@@ -183,41 +187,7 @@ saas-product-analytics/
         └── config.toml          # Theme colours
 ```
 
-> `data/` is gitignored — regenerate locally with `python generate_saas_data.py`
-
----
-
-## How to Run Locally
-
-**Prerequisites:** Python 3.11+, a Snowflake account, dbt-snowflake installed
-
-### 1 — Generate the data
-```bash
-pip install -r requirements.txt
-python generate_saas_data.py
-# Writes 9 CSVs to data/  (~3–5 min)
-```
-
-### 2 — Load into Snowflake
-Run `snowflake_load.sql` in a Snowflake worksheet. Creates the database, warehouse, stage, and loads all 9 tables via `COPY INTO`.
-
-### 3 — Run dbt
-```bash
-cd saas_dbt
-# Add your Snowflake credentials to profiles.yml (see saas_dbt/README.md)
-dbt debug    # verify connection
-dbt run      # build all 16 models
-dbt test     # 39 tests — all should pass
-```
-
-### 4 — Run the dashboard
-```bash
-cd ../streamlit_dashboard
-pip install -r requirements.txt
-# Export mart tables to streamlit_dashboard/data/exports/ using snowflake_export_queries.sql
-streamlit run app.py
-```
-
+> The `data/` directory is excluded from version control. Data can be regenerated locally using `python generate_saas_data.py`.
 ---
 
 ## Tech Stack
