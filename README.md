@@ -21,11 +21,8 @@ Built as a portfolio project to demonstrate end-to-end Analytics Engineering ski
 
 ## 🔗 Live Dashboard
 
-<a href="https://saasanalytics.streamlit.app/" target="_blank" rel="noopener noreferrer">
-  → Live Dashboard
-</a>
-
-**[→ saasanalytics.streamlit.app](https://saasanalytics.streamlit.app/)**
+> 🚀 **[View Live Dashboard ↗](https://saasanalytics.streamlit.app/)**  
+> Interactive SaaS analytics dashboard built with Streamlit
 
 ## 📈 Executive Overview
 
@@ -58,12 +55,12 @@ Built as a portfolio project to demonstrate end-to-end Analytics Engineering ski
 ## Architecture
 
 ```
-┌──────────────────────┐    ┌──────────────────┐    ┌─────────────────────┐    ┌──────────────────┐
-│  generate_saas_      │    │    Snowflake      │    │       dbt           │    │    Streamlit     │
-│  data.py             │───▶│  9 raw tables     │───▶│  16 models          │───▶│  Dashboard       │
-│  45.6M rows          │    │  ~$1.26M MRR      │    │  3 layers           │    │  4 pages         │
-│  Python / NumPy      │    │  40K users        │    │  39 tests passing   │    │  Live on Cloud   │
-└──────────────────────┘    └──────────────────┘    └─────────────────────┘    └──────────────────┘
++----------------------+    +------------------+    +---------------------+    +------------------+
+| generate_saas_data.py|    |    Snowflake     |    |        dbt          |    |    Streamlit     |
+| 45.6M rows           | -> |  9 raw tables    | -> |  16 models          | -> |   Dashboard      |
+| Python / NumPy       |    |  ~$1.26M MRR     |    |  3 layers           |    |   4 pages        |
+|                      |    |  40K users       |    |  39 tests passing   |    |   Live on Cloud  |
++----------------------+    +------------------+    +---------------------+    +------------------+
 ```
 
 **dbt layer detail:**
