@@ -1,6 +1,6 @@
 # SaaS Product Analytics
 
-> End-to-end B2B SaaS analytics pipeline — synthetic data generation → Snowflake → dbt → Streamlit dashboard
+> End-to-end B2B SaaS analytics pipeline - synthetic data generation → Snowflake → dbt → Streamlit dashboard
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://python.org)
 [![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?logo=snowflake&logoColor=white)](https://snowflake.com)
@@ -10,23 +10,44 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-saasanalytics.streamlit.app-00B4D8)](https://saasanalytics.streamlit.app/)
 
 ---
-
-## 🔗 Live Dashboard
-
-**[→ saasanalytics.streamlit.app](https://saasanalytics.streamlit.app/)**
-
-![Dashboard Preview](assets/dashboard_preview.png)
-
----
-
 ## What This Project Demonstrates
-
 Built as a portfolio project to demonstrate end-to-end Analytics Engineering skills on a realistic B2B SaaS dataset:
 
 - **Data modelling** — 3-layer dbt architecture (staging → intermediate → marts) with 16 models and 39 tests
 - **Product analytics thinking** — answering real business questions around MRR, churn, retention, and feature adoption
 - **Modern data stack** — Snowflake + dbt-core + Streamlit, the stack used at most analytics-forward companies
 - **Data quality** — schema tests, not-null/unique/accepted-value constraints enforced across all mart tables
+---
+
+## 🔗 Live Dashboard
+
+**[→ saasanalytics.streamlit.app](https://saasanalytics.streamlit.app/)**
+
+## 📈 Executive Overview
+
+![Executive Overview](assets/ExecutiveOverview.png)
+![Executive Overview - Variant](assets/ExecutiveOverview2.png)
+
+---
+
+## 💰 Revenue & MRR Analysis
+
+![Revenue and MRR](assets/RevenueAndMRR.png)
+![Revenue and MRR - Variant](assets/RevenueAndMRR2.png)
+
+---
+
+## ⚠️ Churn & Engagement Insights
+
+![Churn and Engagement](assets/ChurnAndEngagement.png)
+![Churn and Engagement - Variant](assets/ChurnAndEngagement2.png)
+
+---
+
+## 🔁 Retention & Feature Usage
+
+![Retention and Feature Usage](assets/RetentionAndFeatureUsage.png)
+![Retention and Feature Usage - Variant](assets/RetentionAndFeatureUsage2.png)
 
 ---
 
