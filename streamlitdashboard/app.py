@@ -171,7 +171,10 @@ def inject_active_nav(active_page):
 # ══════════════════════════════════════════════════════
 # DATA
 # ══════════════════════════════════════════════════════
-DATA_DIR = os.path.join(os.path.dirname(__file__), "data", "exports")
+#DATA_DIR = os.path.join(os.path.dirname(__file__), "data", "exports")
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data", "exports")
 
 @st.cache_data
 def load_all():
